@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <style><![CDATA[
+      :root { --bg:#F7F5F0; --ink:#121212; --muted:#4B4B4B; --accent:#D9482B; --line:#CFC8BE; }
+      text { font-family: "SF Pro Text", Helvetica, Arial, sans-serif; fill: var(--ink); }
+      .title { font-size: 86px; font-weight: 700; letter-spacing: -1px; }
+      .subtitle { font-size: 28px; fill: var(--muted); }
+      .label { font-size: 20px; text-transform: uppercase; letter-spacing: 3px; fill: var(--muted); }
+      .box-title { font-size: 26px; font-weight: 600; }
+      .box-body { font-size: 20px; fill: var(--muted); }
+      .stroke { stroke: var(--line); stroke-width: 2; fill: none; }
+      .accent { stroke: var(--accent); }
+      .accent-fill { fill: var(--accent); }
+
+      .dash { stroke-dasharray: 14 12; animation: dash 6.1s linear infinite; }
+      .pulse { animation: pulse 3.8s ease-in-out infinite; transform-origin: left center; transform-box: fill-box; }
+      .grid { fill: url(#grid); animation: gridPulse 9.2s ease-in-out infinite; }
+
+      .global-zoom { animation: globalZoom 13.8s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+      .parallax-1 { animation: parallax1 9.2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+      .parallax-2 { animation: parallax2 10.8s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+      .parallax-3 { animation: parallax3 12.3s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+
+      .sweep { animation: sweep 5.4s ease-in-out infinite; transform-box: fill-box; transform-origin: left center; }
+      .sweep2 { animation-delay: 1.23s; }
+      .sweep3 { animation-delay: 2.0s; }
+
+      @keyframes dash { to { stroke-dashoffset: -260; } }
+      @keyframes pulse { 0% { transform: scaleX(0.7);} 50% { transform: scaleX(1.05);} 100% { transform: scaleX(0.7);} }
+      @keyframes gridPulse { 0% { opacity: 0.28; } 50% { opacity: 0.5; } 100% { opacity: 0.28; } }
+      @keyframes globalZoom { 0% { transform: scale(1);} 50% { transform: scale(1.02);} 100% { transform: scale(1);} }
+      @keyframes parallax1 { 0% { transform: translateY(0);} 50% { transform: translateY(-5px);} 100% { transform: translateY(0);} }
+      @keyframes parallax2 { 0% { transform: translateY(0);} 50% { transform: translateY(-14px);} 100% { transform: translateY(0);} }
+      @keyframes parallax3 { 0% { transform: translateY(0);} 50% { transform: translateY(-14px);} 100% { transform: translateY(0);} }
+      @keyframes sweep { 0% { transform: translateX(-140%);} 50% { transform: translateX(20%);} 100% { transform: translateX(140%);} }
+    ]]></style>
+
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" stroke="var(--line)" stroke-width="1" fill="none" opacity="0.35"/>
+    </pattern>
+    <linearGradient id="accentSweep" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="var(--accent)" stop-opacity="0"/>
+      <stop offset="50%" stop-color="var(--accent)" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="var(--accent)" stop-opacity="0"/>
+    </linearGradient>
+
+    <clipPath id="clip-hero-1"><rect x="120" y="520" width="420" height="190" rx="14"/></clipPath>
+    <clipPath id="clip-hero-2"><rect x="590" y="520" width="420" height="190" rx="14"/></clipPath>
+    <clipPath id="clip-hero-3"><rect x="1060" y="520" width="420" height="190" rx="14"/></clipPath>
+  </defs>
+
+  <rect width="1600" height="900" fill="var(--bg)"/>
+  <rect width="1600" height="900" class="grid"/>
+
+  <g class="global-zoom">
+    <g class="parallax-1">
+      <text class="label" x="120" y="120">Cadence AI</text>
+      <text class="title" x="120" y="230">Continuous Vector</text>
+      <text class="title" x="120" y="320">Generation at Scale</text>
+      <rect class="accent-fill pulse" x="120" y="342" width="430" height="8" rx="4"/>
+      <text class="subtitle" x="120" y="400">Moving beyond discrete tokens with smooth, patch-level autoregression.</text>
+      <text class="subtitle" x="120" y="440">Fewer steps. Higher throughput. Clear scaling of semantic bandwidth.</text>
+    </g>
+
+    <g class="parallax-3">
+      <circle cx="1275" cy="250" r="150" class="stroke"/>
+      <circle cx="1275" cy="250" r="150" class="stroke accent dash"/>
+      <circle cx="1275" cy="250" r="110" class="stroke"/>
+      <text x="1210" y="240" class="box-title">K-Token</text>
+      <text x="1210" y="270" class="box-body">Patch</text>
+      <text x="1210" y="300" class="box-body">Representation</text>
+      <circle r="5" class="accent-fill">
+        <animateMotion dur="5.4s" repeatCount="indefinite"
+          path="M 1275 250 m -150 0 a 150 150 0 1 0 300 0 a 150 150 0 1 0 -300 0"/>
+      </circle>
+    </g>
+
+    <g class="parallax-2" clip-path="url(#clip-hero-1)">
+      <rect x="120" y="520" width="420" height="190" rx="14" class="stroke"/>
+      <rect x="120" y="520" width="240" height="190" fill="url(#accentSweep)" class="sweep"/>
+      <text class="box-title" x="150" y="565">Patch Size K</text>
+      <text class="box-body" x="150" y="600">Predict K tokens per step</text>
+      <text class="box-body" x="150" y="628">to reduce autoregressive loops.</text>
+      <text class="box-body" x="150" y="656">Higher throughput at fixed compute.</text>
+    </g>
+
+    <g class="parallax-2" clip-path="url(#clip-hero-2)">
+      <rect x="590" y="520" width="420" height="190" rx="14" class="stroke"/>
+      <rect x="590" y="520" width="240" height="190" fill="url(#accentSweep)" class="sweep sweep2"/>
+      <text class="box-title" x="620" y="565">Latent Vector</text>
+      <text class="box-body" x="620" y="600">Autoencoder compresses</text>
+      <text class="box-body" x="620" y="628">patches into dense vectors</text>
+      <text class="box-body" x="620" y="656">with high-fidelity reconstruction.</text>
+    </g>
+
+    <g class="parallax-2" clip-path="url(#clip-hero-3)">
+      <rect x="1060" y="520" width="420" height="190" rx="14" class="stroke"/>
+      <rect x="1060" y="520" width="240" height="190" fill="url(#accentSweep)" class="sweep sweep3"/>
+      <text class="box-title" x="1090" y="565">Likelihood-Free</text>
+      <text class="box-body" x="1090" y="600">Energy, diffusion, or flow</text>
+      <text class="box-body" x="1090" y="628">heads train in latent space</text>
+      <text class="box-body" x="1090" y="656">without token likelihoods.</text>
+    </g>
+  </g>
+</svg>
